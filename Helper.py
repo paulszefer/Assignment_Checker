@@ -37,8 +37,15 @@ def run_checkstyle(folder_name):
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE)
     output, errors = command.communicate()
-    print('Checkstyle output: ' + trim_byte_chars(str(output)))
-    print('Checkstyle errors: ' + trim_byte_chars(str(errors)))
+    output_str = trim_byte_chars(str(output))
+    errors_str = trim_byte_chars(str(errors))
+    print('Checkstyle output: ' + output_str)
+    print('Checkstyle errors: ' + errors_str)
+
+    checkstyle_log = open(folder_name + '/checkstyle_report.txt', 'a')
+    checkstyle_log.write('\r\n' + output_str)
+    checkstyle_log.write('\r\n' + errors_str)
+    checkstyle_log.close()
 
 
 # Compiles all Java source files found in the src directory to a bin
