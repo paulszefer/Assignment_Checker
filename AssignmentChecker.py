@@ -57,7 +57,7 @@ def main():
 
             compile_sources(folder_name)
 
-            # execute_projects()
+            execute_projects(folder_name)
 
 
 # Begins execution with the main() method

@@ -37,10 +37,12 @@ def run_checkstyle(folder_name):
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE)
     output, errors = command.communicate()
-    output_str = trim_byte_chars(str(output))
-    errors_str = trim_byte_chars(str(errors))
+    output_str = decode_to_str(output)
+    errors_str = decode_to_str(errors)
     print('Checkstyle output: ' + output_str)
+    print(output_str)
     print('Checkstyle errors: ' + errors_str)
+    print(errors_str)
 
     checkstyle_log = open(folder_name + '/checkstyle_report.txt', 'a')
     checkstyle_log.write('\r\n' + output_str)
@@ -63,8 +65,8 @@ def compile_sources(folder_name):
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE)
     output, errors = command.communicate()
-    output_str = trim_byte_chars(str(output))
-    errors_str = trim_byte_chars(str(errors))
+    output_str = decode_to_str(output)
+    errors_str = decode_to_str(errors)
     print('Compile output: ' + output_str)
     print('Compile errors: ' + errors_str)
 
@@ -76,9 +78,28 @@ def compile_sources(folder_name):
     error_log.close()
 
 
+def execute_projects(folder_name):
+    structure_file = open('assignment_config/run_structure.txt', 'r')
+    for line in structure_file.readlines():
+        print("Executing " + line.split()[0])
+        command = subprocess.Popen('execute_projects.bat ' + folder_name + ' ' + line,
+                                   stdout=subprocess.PIPE,
+                                   stderr=subprocess.PIPE)
+        output, errors = command.communicate()
+        output_str = decode_to_str(output)
+        errors_str = decode_to_str(errors)
+        print('Execute output: ' + output_str)
+        print('Execute errors: ' + errors_str)
+
+        with open(folder_name + '/output.txt', 'a') as output_file:
+            output_file.write(output_str)
+            output_file.close()
+    structure_file.close()
+
+
 # Returns a string with the byte characters removed.
 # These byte characters consist of:
 #   b' to start the string
 #   '  to end the string
-def trim_byte_chars(string):
-    return string.lstrip('b\'').rstrip('\'')
+def decode_to_str(byte_array):
+    return byte_array.decode('utf-8')
