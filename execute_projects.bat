@@ -1,7 +1,7 @@
+@echo off
+
 REM This script executes the Java class files provided
 REM and redirects an input file to standard input, if provided.
-
-@echo off
 
 REM Navigate to correct directory
 cd %1

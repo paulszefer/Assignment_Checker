@@ -1,8 +1,8 @@
+@echo off
+
 REM This script compiles a list of paths to Java source files
 REM found in the directory navigated to. The list is then
 REM output to a sources.txt file.
-
-@echo off
 
 REM Navigate to the correct directory
 cd %1
