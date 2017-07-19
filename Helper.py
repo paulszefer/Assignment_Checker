@@ -40,9 +40,7 @@ def run_checkstyle(folder_name):
     output_str = decode_to_str(output)
     errors_str = decode_to_str(errors)
     print('Checkstyle output: ' + output_str)
-    print(output_str)
     print('Checkstyle errors: ' + errors_str)
-    print(errors_str)
 
     checkstyle_log = open(folder_name + '/checkstyle_report.txt', 'a')
     checkstyle_log.write('\r\n' + output_str)
@@ -88,7 +86,7 @@ def execute_projects(folder_name):
         output, errors = command.communicate()
         output_str = decode_to_str(output)
         errors_str = decode_to_str(errors)
-        print('Execute output: ' + output_str)
+        # print('Execute output: ' + output_str)
         print('Execute errors: ' + errors_str)
 
         with open(folder_name + '/output.txt', 'a') as output_file:

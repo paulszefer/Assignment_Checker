@@ -49,6 +49,7 @@ from Helper import *
 def main():
     for zipFolder in filter(is_zip_folder, Path().iterdir()):
         folder_name = zipFolder.name.rstrip('.zip')
+        print('Processing assignment for: ' + folder_name)
 
         with zipfile.ZipFile(str(zipFolder)) as this_zip:
             extract_sources(folder_name, this_zip)
@@ -61,4 +62,7 @@ def main():
 
 
 # Begins execution with the main() method
+print('Assignment processing beginning...')
 main()
+print('Assignment processing finished.')
+
