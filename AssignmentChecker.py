@@ -19,7 +19,9 @@
 # 4. The source files will be compiled into a bin folder inside
 # the UserID folder, with a file named compile_errors storing
 # all errors occurring during compilation.
-# 5. Each source file package will be executed.
+# 5. Each source file package will be executed. If an input file
+# is provided, it will be redirected to standard input of the
+# applicable class at execution time.
 #
 # Assignments have the following structure:
 #
@@ -35,8 +37,9 @@
 #       |
 #       readme.txt
 #
-# TODO - redirection for file input, system output
 # TODO - check for/handle incorrect submission zip format
+# TODO - consider issue with discarding standard input by
+# TODO -     creating a new Scanner
 #
 # ------------------------------------------------------------------
 
@@ -65,4 +68,3 @@ def main():
 print('Assignment processing beginning...')
 main()
 print('Assignment processing finished.')
-

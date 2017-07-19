@@ -33,7 +33,8 @@ def extract_sources(folder_name, zip_folder):
 # The report file generated is: checkstyle_report.txt
 def run_checkstyle(folder_name):
     command = subprocess.Popen(
-        'java -jar checkstyle-8.0-all.jar -c checkstyle_config.xml -o ' + folder_name + '/checkstyle_report.txt ' + folder_name + '/src/*',
+        'java -jar checkstyle-8.0-all.jar -c checkstyle_config.xml -o '
+        + folder_name + '/checkstyle_report.txt ' + folder_name + '/src/*',
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE)
     output, errors = command.communicate()
@@ -76,13 +77,19 @@ def compile_sources(folder_name):
     error_log.close()
 
 
+# Executes the main classes referenced in
+# assignment_config/run_structure.txt. If an input file is provided,
+# then it will be redirected to standard input of the executing
+# class. The execution output is directed to output.txt in the UserID
+# folder.
 def execute_projects(folder_name):
     structure_file = open('assignment_config/run_structure.txt', 'r')
     for line in structure_file.readlines():
         print("Executing " + line.split()[0])
-        command = subprocess.Popen('execute_projects.bat ' + folder_name + ' ' + line,
-                                   stdout=subprocess.PIPE,
-                                   stderr=subprocess.PIPE)
+        command = subprocess.Popen(
+            'execute_projects.bat ' + folder_name + ' ' + line,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE)
         output, errors = command.communicate()
         output_str = decode_to_str(output)
         errors_str = decode_to_str(errors)
@@ -95,9 +102,6 @@ def execute_projects(folder_name):
     structure_file.close()
 
 
-# Returns a string with the byte characters removed.
-# These byte characters consist of:
-#   b' to start the string
-#   '  to end the string
+# Returns a string representation of the given byte array.
 def decode_to_str(byte_array):
     return byte_array.decode('utf-8')
