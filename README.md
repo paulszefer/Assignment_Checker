@@ -27,9 +27,11 @@ One class can be referenced per line.
 To add an input text file to redirect to the program at execution time, add it after a space in the run_structure.txt file.
 
 Example:
+
 q1/TriangleArea
 
 Example with file redirect:
+
 q1/TriangleArea triangle_area_input.txt
 
 # Example Assignments
