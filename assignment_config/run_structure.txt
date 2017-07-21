@@ -1,4 +1,0 @@
-q1/TriangleArea triangle_area_input.txt
-q2/CylinderStats cylinder_stats_input.txt
-q3/Bookshelf
-q4/TrafficLight
