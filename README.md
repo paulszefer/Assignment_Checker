@@ -12,7 +12,7 @@ and put it in the same directory as AssignmentChecker.py
 Required folders/files for running AssignmentChecker.py are:
 - AssignmentChecker.py
 - Helper.py
-- assignment_config/run_structure.txt (plus any input files for file redirection)
+- assignment_config/class_list.txt (plus any input files for file redirection)
 - <a href="https://sourceforge.net/projects/checkstyle/files/checkstyle/">checkstyle-8.0-all.jar</a>
 - checkstyle_config.xml (can be replaced by any checkstyle configuration file renamed to this)
 - suppressions.xml
@@ -21,10 +21,10 @@ Required folders/files for running AssignmentChecker.py are:
 - ZIP folders to process
 
 # Configuration Instructions
-To configure the main classes that need to be run, use the run_structure.txt file inside the assignment_config folder.
+To configure the main classes that need to be run, use the class_list.txt file inside the assignment_config folder.
 One class can be referenced per line.
 
-To add an input text file to redirect to the program at execution time, add it after a space in the run_structure.txt file.
+To add an input text file to redirect to the program at execution time, add it after a space in the class_list.txt file.
 
 Example:
 

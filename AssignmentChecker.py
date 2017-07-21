@@ -40,12 +40,11 @@
 # TODO - check for/handle incorrect submission zip format
 # TODO - consider issue with discarding standard input by
 # TODO -     creating a new Scanner
-#
 # ------------------------------------------------------------------
 
 from pathlib import Path
 import zipfile
-from Helper import *
+from Actions import *
 
 
 # The point of entry into the program.
